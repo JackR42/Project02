@@ -16,7 +16,12 @@ steps:
 - task: TerraformInstaller@0
   inputs:
     terraformVersion: 'latest'
-
+- task: AzureKeyVault@2
+  inputs:
+    azureSubscription: 'SPN-project02160333'
+    KeyVaultName: 'keyvaultproject02160333'
+    SecretsFilter: '*'
+    RunAsPreJob: true
 - task: TerraformTaskV3@3
   inputs:
     provider: 'azurerm'
