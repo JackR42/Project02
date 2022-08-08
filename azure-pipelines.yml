@@ -47,5 +47,6 @@ steps:
   displayName: 'TF_Apply'
   inputs:
     provider: 'azurerm'
-    command: 'apply main.tfplan'
+    command: 'apply'
+    commandOptions: ' main.tfplan'
     environmentServiceNameAzureRM: 'SPN-project02160333'
