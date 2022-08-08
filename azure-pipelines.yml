@@ -13,3 +13,28 @@ steps:
 - script: echo Hello, Project02!
   displayName: 'Run a one-line script'
 
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: 'latest'
+
+- task: TerraformTaskV3@3
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'SPN-project02160333'
+    backendAzureRmResourceGroupName: 'S2-RG-project02-CORE'
+    backendAzureRmStorageAccountName: 'storageproject02160333'
+    backendAzureRmContainerName: 'tfstate'
+    backendAzureRmKey: 'main.tfstate'
+    
+- task: TerraformTaskV3@3
+  inputs:
+    provider: 'azurerm'
+    command: 'plan -output main.tfplan'
+    environmentServiceNameAzureRM: 'SPN-project02160333'
+
+- task: TerraformTaskV3@3
+  inputs:
+    provider: 'azurerm'
+    command: 'apply main.tfplan'
+    environmentServiceNameAzureRM: 'SPN-project02160333'
