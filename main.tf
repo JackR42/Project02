@@ -18,7 +18,7 @@ data "azurerm_key_vault_secret" "secret0" {
 ### END KeyVault
 
 ### BEGIN MAIN
-resource "azurerm_resource_group" "project" {
+resource "azurerm_resource_group" "project02" {
   name = data.azurerm_key_vault_secret.secret0.value
   location = "westeurope"
 }
