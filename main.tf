@@ -1,3 +1,10 @@
+provider "azurerm" {
+  features {}
+}
+
+terraform {
+  backend "azurerm" {}
+}
 ### BEGIN KeyVault
 data "azurerm_key_vault" "project" {
   name                = "keyvaultproject02160333"
